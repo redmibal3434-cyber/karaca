@@ -1,0 +1,1 @@
+const {db,auth}=require('./_lib');module.exports=async(req,res)=>{if(!auth(req))return res.status(401).json({error:'Yetkisiz erişim'});try{const {data,error}=await db().from('site_settings').select('*').eq('id',1).maybeSingle();if(error)throw error;return res.json(data||{})}catch(e){return res.status(500).json({error:'Ayarlar alınamadı'})}}

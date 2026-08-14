@@ -1,0 +1,1 @@
+const {db}=require('./_lib');module.exports=async(req,res)=>{try{const {data,error}=await db().from('site_settings').select('*').eq('id',1).maybeSingle();if(error)throw error;return res.json(data||{})}catch(e){return res.status(500).json({error:'Ayarlar alınamadı'})}}

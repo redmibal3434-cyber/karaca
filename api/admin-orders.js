@@ -1,0 +1,1 @@
+const {db,auth}=require('./_lib');module.exports=async(req,res)=>{if(!auth(req))return res.status(401).json({error:'Yetkisiz erişim'});try{const {data,error}=await db().from('orders').select('*').order('created_at',{ascending:false}).limit(500);if(error)throw error;return res.json({orders:data||[]})}catch(e){return res.status(500).json({error:'Siparişler alınamadı'})}}

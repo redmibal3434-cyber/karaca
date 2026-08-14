@@ -1,28 +1,8 @@
-# Mutfak Kampanyası V4
-
-## Dosyalar
-- `index.html`: profesyonel satış/talep sayfası
-- `admin.html`: şifre korumalı yönetim paneli
-- `api/orders.js`: yeni sipariş kaydı
-- `api/admin-orders.js`: admin listeleme/durum/silme API'si
-- `supabase.sql`: Supabase tablo şeması
-
-## Vercel Environment Variables
-Production için şu 3 değişkeni ekleyin:
-- `SUPABASE_URL`
-- `SUPABASE_SECRET_KEY`
-- `ADMIN_PASSWORD` (uzun ve benzersiz bir parola seçin)
-
-Ardından Redeploy yapın.
-
-## Supabase
-SQL Editor'de `supabase.sql` içeriğini çalıştırın. Eski `orders` tablonuz farklı kolonlara sahipse geliştirme aşamasında tabloyu yedekleyip yeni şemaya göre migration uygulayın.
-
-## Admin
-`/admin.html` adresinden giriş yapılır. Şifre Vercel'deki `ADMIN_PASSWORD` değeridir.
-
-## Güvenlik notu
-Bu proje kart numarası, CVV, kart şifresi veya SMS doğrulama kodu toplamaz. Bu nedenle ödeme ağı logoları, gerçek kart tahsilatı yapılıyormuş izlenimi oluşturmaması için kullanılmamıştır.
-
-## Görseller
-Sayfada yüksek çözünürlüklü uzaktan görseller kullanılır. Kendi lisanslı ürün fotoğraflarınızla değiştirmek için `index.html` içindeki ürün görsel URL'lerini değiştirmeniz yeterlidir.
+# V5 Admin + Medya
+1. Supabase SQL Editor'de `supabase.sql` çalıştırın.
+2. Vercel Environment Variables: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `ADMIN_PASSWORD`.
+3. GitHub repo köküne tüm dosyaları yükleyin.
+4. Vercel deploy sonrası `/admin.html` açın.
+5. Admin panelinden logo, tencere, çaydanlık ve promosyon bardak görsellerini JPG/PNG/WEBP olarak yükleyin (maks. 4 MB).
+6. Ana sayfa bu görselleri otomatik çeker.
+Not: Yönetici paneli kart numarası/CVV/SMS kodu toplamaz.
