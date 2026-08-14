@@ -1,9 +1,12 @@
-# Mutfak Kampanyası V3
+# Kampanya V2
 
-Statik, mobil uyumlu kampanya/sipariş sayfası.
+## Kurulum
+1. Supabase SQL Editor'da `supabase.sql` dosyasını çalıştırın.
+2. Vercel Environment Variables'a:
+   - `SUPABASE_URL`
+   - `SUPABASE_SECRET_KEY`
+   ekleyin.
+3. Bu klasörün tamamını GitHub deponuzun kök dizinine yükleyin.
+4. Vercel yeni deployment'ı otomatik oluşturacaktır.
 
-## Vercel
-Bu klasördeki dosyaları GitHub deposunun köküne yükleyin ve Vercel projesini repoya bağlayın. Framework Preset: Other. Build command gerekmez.
-
-## Not
-Form bu sürümde demo olarak başarı penceresi gösterir; gerçek sipariş kaydı için kendi backend/veritabanı endpoint'inizi bağlayın.
+Not: `vercel.json` içinde eski `functions: api/*.js` deseni yoktur. `/api/orders.js` Vercel tarafından otomatik Serverless Function olarak algılanır.

