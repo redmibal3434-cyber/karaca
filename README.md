@@ -7,3 +7,9 @@
 - Talep numarası: 17 rakam.
 - Talep tarihi: NN-NN biçimi; sabit bir tarih değildir.
 - Talep kodu: 5 rakam.
+
+
+## V6 kritik düzeltme
+Tarayıcıdaki `window.name` ile `id="name"` çakışması giderildi. Form alanlarının tamamı artık
+`document.getElementById(...)` ile açıkça okunuyor. Bu nedenle Ad Soyad dolu olduğu halde
+"Ad Soyad alanını doldurunuz" uyarısı verilmez.
