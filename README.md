@@ -1,8 +1,12 @@
-KURULUM
-1) Supabase SQL Editor'de supabase.sql çalıştır.
-2) Vercel Environment Variables'a SUPABASE_URL ve SUPABASE_SECRET_KEY ekle.
-3) Dosyaları GitHub repo köküne yükle.
-4) Vercel'de repoyu deploy et.
-5) Gerçek marka logosu ve ürün fotoğraflarını yalnızca kullanım hakkın varsa ekle.
+# Kampanya V2
 
-Form kart numarası, CVV, kart şifresi veya SMS doğrulama kodu toplamaz.
+## Kurulum
+1. Supabase SQL Editor'da `supabase.sql` dosyasını çalıştırın.
+2. Vercel Environment Variables'a:
+   - `SUPABASE_URL`
+   - `SUPABASE_SECRET_KEY`
+   ekleyin.
+3. Bu klasörün tamamını GitHub deponuzun kök dizinine yükleyin.
+4. Vercel yeni deployment'ı otomatik oluşturacaktır.
+
+Not: `vercel.json` içinde eski `functions: api/*.js` deseni yoktur. `/api/orders.js` Vercel tarafından otomatik Serverless Function olarak algılanır.
