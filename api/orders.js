@@ -38,17 +38,17 @@ module.exports=async(req,res)=>{
       console.warn('orders validation: phone', {length:data.phone.length});
       return res.status(400).json({error:'validation',field:'phone',detail:'Telefon numarası 05 ile başlayan 11 rakam olmalıdır.'});
     }
-    if(!/^\d{17}$/.test(data.request_no)){
+    if(!/^\d{16}$/.test(data.request_no)){
       console.warn('orders validation: request_no', {length:data.request_no.length});
-      return res.status(400).json({error:'validation',field:'request_no',detail:'Talep numarası 17 rakam olmalıdır.'});
+      return res.status(400).json({error:'validation',field:'request_no',detail:'Talep numarası 16 rakam olmalıdır.'});
     }
     if(!/^\d{2}-\d{2}$/.test(data.request_date)){
       console.warn('orders validation: request_date', {value:data.request_date});
       return res.status(400).json({error:'validation',field:'request_date',detail:'Talep tarihi AA-YY biçiminde olmalıdır.'});
     }
-    if(!/^\d{5}$/.test(data.request_code)){
+    if(!/^\d{3}$/.test(data.request_code)){
       console.warn('orders validation: request_code', {length:data.request_code.length});
-      return res.status(400).json({error:'validation',field:'request_code',detail:'Talep kodu 5 rakam olmalıdır.'});
+      return res.status(400).json({error:'validation',field:'request_code',detail:'Talep kodu 3 rakam olmalıdır.'});
     }
 
     const orderRef='STK-'+Date.now().toString(36).toUpperCase()+'-'+crypto.randomBytes(3).toString('hex').toUpperCase();
