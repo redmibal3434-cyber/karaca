@@ -1,8 +1,1 @@
-{
-  "name": "kampanya-v2",
-  "version": "2.0.0",
-  "private": true,
-  "dependencies": {
-    "@supabase/supabase-js": "^2.57.0"
-  }
-}
+{"dependencies":{"@supabase/supabase-js":"^2.57.0"}}
