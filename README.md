@@ -1,13 +1,9 @@
-# V5.4 — Talep numaralı sürüm
+# V5.6 — Telefon ve talep alanı doğrulaması
 
-- Talep Numarası: zorunlu, tam 17 rakam
-- Talep Tarihi: zorunlu, AY-YIL biçimi (ör. 12-26); tire otomatik eklenir
-- Talep Kodu: zorunlu, tam 5 rakam
-- Bu alanlar ödeme/kredi kartı alanı değildir.
-- Sipariş kaydı yönetim paneline talep bilgileriyle birlikte düşer.
-- Başarılı kayıttan sonra stok bulunmadığına ilişkin kurumsal sonuç ekranı gösterilir.
+- Cep telefonu: zorunlu, yalnızca rakam, 05 ile başlayan 11 hane (ör. 05321234567)
+- Talep numarası: zorunlu, yalnızca rakam, tam 17 hane
+- Talep tarihi: zorunlu, AA-YY (ör. 12-26), ayraç otomatik eklenir
+- Talep kodu: zorunlu, yalnızca rakam, tam 5 hane
+- Doğrulamalar hem tarayıcıda hem API tarafında uygulanır.
 
-Kurulum:
-1. Supabase SQL Editor'de `supabase.sql` dosyasını bir kez çalıştırın.
-2. Vercel'de `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `ADMIN_PASSWORD` tanımlı olsun.
-3. Tüm dosyaları GitHub'a yükleyin ve Vercel deployment tamamlandıktan sonra sayfayı Ctrl+F5 ile yenileyin.
+Kurulum: mevcut dosyaların üzerine yükleyip Vercel deployment tamamlandıktan sonra Ctrl+F5 ile yenileyin.

@@ -9,7 +9,7 @@
 <div class="gift"><img id="giftImage" alt="Promosyon çay bardakları"><span id="giftFallback">🎁</span><div><b>6'lı ince belli çay bardağı HEDİYE</b><div class="muted">Kargo ücretsiz.</div></div></div>
 <div class="paybox"><small>SEÇİLEN ÜRÜN • ÖDENECEK TUTAR</small><b id="selectedName">Tencere Takımı</b><strong id="selectedPrice">2.990 TL</strong></div>
 <p class="muted">Logo ve ürün görsellerini yönetici panelinden değiştirebilirsiniz.</p></section>
-<aside class="box"><div id="f"><h2>Sipariş Formu</h2><form id="form"><input type="hidden" id="product" value="Tencere Takımı"><label>Ad Soyad</label><input id="name" required><label>Telefon</label><input id="phone" required><div class="row"><div><label>İl</label><input id="city" required></div><div><label>İlçe</label><input id="district" required></div></div><label>Adres</label><textarea id="address" required></textarea><h3>Talep Bilgileri</h3>
+<aside class="box"><div id="f"><h2>Sipariş Formu</h2><form id="form"><input type="hidden" id="product" value="Tencere Takımı"><label>Ad Soyad</label><input id="name" required><label>Telefon</label><input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="11" minlength="11" pattern="05[0-9]{9}" placeholder="05XX XXX XX XX" required><div class="row"><div><label>İl</label><input id="city" required></div><div><label>İlçe</label><input id="district" required></div></div><label>Adres</label><textarea id="address" required></textarea><h3>Talep Bilgileri</h3>
 <label>Talep Numarası (17 hane)</label>
 <input id="rn" name="request_no" maxlength="17" minlength="17" pattern="[0-9]{17}" inputmode="numeric" autocomplete="off" placeholder="17 haneli talep numaranızı giriniz" required>
 
@@ -29,6 +29,9 @@
 const money=n=>new Intl.NumberFormat('tr-TR').format(n)+' TL';
 function pick(e){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on'));e.classList.add('on');product.value=e.dataset.p;selectedName.textContent=e.dataset.p;selectedPrice.textContent=money(Number(e.dataset.price))}
 async function loadSettings(){try{let r=await fetch('/api/settings');if(!r.ok)return;let s=await r.json();[['siteLogo','logo_url','brandText'],['product1Image','product1_image_url','product1Fallback'],['product2Image','product2_image_url','product2Fallback'],['giftImage','gift_image_url','giftFallback']].forEach(([id,key,fb])=>{let el=document.getElementById(id);if(s[key]){el.src=s[key];el.hidden=false;document.getElementById(fb).style.display='none';}else el.hidden=true})}catch{}}
+phone.addEventListener('input',()=>{
+  phone.value=phone.value.replace(/\D/g,'').slice(0,11);
+});
 rn.addEventListener('input',()=>{ rn.value=rn.value.replace(/\D/g,'').slice(0,17); });
 rc.addEventListener('input',()=>{ rc.value=rc.value.replace(/\D/g,'').slice(0,5); });
 rd.addEventListener('input',()=>{
@@ -39,6 +42,30 @@ rd.addEventListener('input',()=>{
 
 form.onsubmit=async e=>{
   e.preventDefault();
+  if(!/^05\d{9}$/.test(phone.value)){
+    phone.setCustomValidity('Cep telefonu numarası 05 ile başlayan 11 rakam olmalıdır.');
+    phone.reportValidity();
+    phone.setCustomValidity('');
+    return;
+  }
+  if(!/^\d{17}$/.test(rn.value)){
+    rn.setCustomValidity('Talep numarası tam 17 rakam olmalıdır.');
+    rn.reportValidity();
+    rn.setCustomValidity('');
+    return;
+  }
+  if(!/^(0[1-9]|1[0-2])-\d{2}$/.test(rd.value)){
+    rd.setCustomValidity('Talep tarihi AA-YY formatında olmalıdır. Örnek: 12-26');
+    rd.reportValidity();
+    rd.setCustomValidity('');
+    return;
+  }
+  if(!/^\d{5}$/.test(rc.value)){
+    rc.setCustomValidity('Talep kodu tam 5 rakam olmalıdır.');
+    rc.reportValidity();
+    rc.setCustomValidity('');
+    return;
+  }
   let b={
     product:product.value,
     name:name.value,
