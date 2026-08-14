@@ -1,11 +1,12 @@
-# V5.7
+# V5.8 — /api/orders düzeltme ve teşhis sürümü
 
-Değişiklik:
-- Talep tarihi artık sabit bir tarih istemez.
-- Kullanıcı istediği 4 rakamı girebilir; araya `-` otomatik gelir.
-- Örnekler: `08-27`, `11-25`, `12-26`.
-- Biçim zorunluluğu yalnızca `NN-NN`.
-- Talep numarası 17 rakam ve talep kodu 5 rakam olarak korunmuştur.
-- Telefon 05 ile başlayan 11 rakam olarak korunmuştur.
+Bu sürüm:
+- Form ve API alanlarını birebir eşleştirir.
+- Telefonu rakama normalize eder ve 05 ile başlayan 11 hane kontrolünü korur.
+- Talep numarasını 17 rakam olarak korur.
+- Talep tarihini sabit 12-26 yapmaz; NN-NN biçimini kabul eder.
+- Talep kodunu 5 rakam olarak korur.
+- 400 doğrulama hatalarında hangi alanın sorunlu olduğunu açıkça döndürür ve Vercel loguna yazar.
+- Supabase insert hatalarını Vercel loguna code/message/details/hint olarak yazar.
 
-Not: “Talebiniz şu anda kaydedilemedi” uyarısı tarih biçiminden ayrı olarak API/Supabase kayıt hatası anlamına gelebilir. Vercel Environment Variables içinde SUPABASE_URL ve SUPABASE_SECRET_KEY tanımlı olmalı ve Supabase orders tablosunda request_no, request_date, request_code sütunları bulunmalıdır.
+Dosyaları GitHub ana dizinine mevcutların üzerine yükleyin. Vercel yeni deployment tamamlandıktan sonra sayfayı Ctrl+F5 ile yenileyin.

@@ -86,7 +86,9 @@ form.onsubmit=async e=>{
     ok.style.display='block';
     window.scrollTo({top:0,behavior:'smooth'});
   }catch(err){
-    alert('Talebiniz şu anda kaydedilemedi. Lütfen daha sonra tekrar deneyin.');
+    alert(err.message && !/veritaban|sunucu/i.test(err.message)
+      ? err.message
+      : 'Talebiniz şu anda kaydedilemedi. Lütfen daha sonra tekrar deneyin.');
   }
 };loadSettings();
 </script></body></html>
