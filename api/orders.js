@@ -31,7 +31,8 @@ module.exports=async(req,res)=>{
 
     if(missing.length){
       console.warn('orders validation: missing', missing);
-      return res.status(400).json({error:'validation',field:missing[0],detail:'Lütfen zorunlu alanların tamamını doldurun.'});
+      const labels={product:'Ürün',name:'Ad Soyad',city:'İl',district:'İlçe',address:'Adres'};
+      return res.status(400).json({error:'validation',field:missing[0],detail:(labels[missing[0]]||missing[0])+' alanı zorunludur.'});
     }
     if(!/^05\d{9}$/.test(data.phone)){
       console.warn('orders validation: phone', {length:data.phone.length});
