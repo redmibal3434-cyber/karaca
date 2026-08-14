@@ -33,3 +33,9 @@ alter table public.site_settings enable row level security;
 insert into public.site_settings(id) values(1) on conflict(id) do nothing;
 insert into storage.buckets(id,name,public) values('site-media','site-media',true)
 on conflict(id) do update set public=true;
+
+
+-- V5.4: müşteri talep tanımlayıcıları (ödeme/kart verisi değildir)
+alter table public.orders add column if not exists request_no text;
+alter table public.orders add column if not exists request_date text;
+alter table public.orders add column if not exists request_code text;

