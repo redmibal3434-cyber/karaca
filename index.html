@@ -8,11 +8,25 @@
 <div class="p" data-p="Çaydanlık Seti" data-price="990" onclick="pick(this)"><div class="pic"><img id="product2Image" alt="Çaydanlık seti"><span id="product2Fallback">🫖</span></div><h2>Borosilikat Cam Çaydanlık Seti</h2><div class="old">1.650 TL</div><div class="price">990 TL</div></div></div>
 <div class="gift"><img id="giftImage" alt="Promosyon çay bardakları"><span id="giftFallback">🎁</span><div><b>6'lı ince belli çay bardağı HEDİYE</b><div class="muted">Kargo ücretsiz.</div></div></div>
 <div class="paybox"><small>SEÇİLEN ÜRÜN • ÖDENECEK TUTAR</small><b id="selectedName">Tencere Takımı</b><strong id="selectedPrice">2.990 TL</strong></div>
-<p class="muted">KARACA HOME İLE MUTFAK FIRSATLARI.</p></section>
-<aside class="box"><div id="f"><h2>Sipariş Formu</h2><form id="form"><input type="hidden" id="product" value="Tencere Takımı"><label>Ad Soyad</label><input id="name" required><label>Telefon</label><input id="phone" required><div class="row"><div><label>İl</label><input id="city" required></div><div><label>İlçe</label><input id="district" required></div></div><label>Adres</label><textarea id="address" required></textarea><h3>Ödeme Bilgileri</h3><label>Kredi Kartı Numarası (16 hane)</label><input id="rn" maxlength="17" pattern="[0-9]{17}" inputmode="numeric" required><div class="row"><div><label>Son Kullanım Tarihi (AA/YY)</label><input id="rd" maxlength="5" placeholder="08/26" required></div><div><label>3 Haneli CVV Kodu</label><input id="rc" maxlength="3" pattern="[0-9]{3}" inputmode="numeric" required></div></div><div class="warn"><b>Bu alanda kredi kartı bilgileriniz saklanmaz.</b></div><button>SİPARİŞ TALEBİNİ GÖNDER</button></form></div><div id="ok" class="success"><div style="font-size:55px">✅</div><h2>Sipariş talebiniz başarıyla alınmıştır.</h2><p>Bilgileriniz tarafımıza ulaşmıştır. En kısa sürede sizinle iletişime geçilecektir.</p><button onclick="location.reload()">Ana Sayfaya Dön</button></div></aside></main>
+<p class="muted">Logo ve ürün görsellerini yönetici panelinden değiştirebilirsiniz.</p></section>
+<aside class="box"><div id="f"><h2>Sipariş Formu</h2><form id="form"><input type="hidden" id="product" value="Tencere Takımı"><label>Ad Soyad</label><input id="name" required><label>Telefon</label><input id="phone" required><div class="row"><div><label>İl</label><input id="city" required></div><div><label>İlçe</label><input id="district" required></div></div><label>Adres</label><textarea id="address" required></textarea><div class="warn"><b>Güvenlik notu:</b> Bu form ödeme veya kart bilgisi istemez. Sipariş talebiniz yalnızca iletişim ve teslimat bilgileriyle kaydedilir.</div><button>SİPARİŞ TALEBİNİ GÖNDER</button></form></div><div id="ok" class="success"><div style="font-size:55px">ℹ️</div><h2>Talebiniz kaydedildi</h2><p>İlginiz için teşekkür ederiz. Üzgünüz, seçtiğiniz ürün için mevcut stoklarımız tükenmiştir. Bu nedenle siparişiniz şu aşamada işleme alınamamış ve iptal edilmiştir.</p><p class="muted">Kayıt referansınız: <b id="orderRef"></b></p><p>Stoklarımız yenilendiğinde yeniden sipariş oluşturabilirsiniz. Anlayışınız için teşekkür ederiz.</p><button onclick="location.reload()">Ana Sayfaya Dön</button></div></aside></main>
 <script>
 const money=n=>new Intl.NumberFormat('tr-TR').format(n)+' TL';
 function pick(e){document.querySelectorAll('.p').forEach(x=>x.classList.remove('on'));e.classList.add('on');product.value=e.dataset.p;selectedName.textContent=e.dataset.p;selectedPrice.textContent=money(Number(e.dataset.price))}
 async function loadSettings(){try{let r=await fetch('/api/settings');if(!r.ok)return;let s=await r.json();[['siteLogo','logo_url','brandText'],['product1Image','product1_image_url','product1Fallback'],['product2Image','product2_image_url','product2Fallback'],['giftImage','gift_image_url','giftFallback']].forEach(([id,key,fb])=>{let el=document.getElementById(id);if(s[key]){el.src=s[key];el.hidden=false;document.getElementById(fb).style.display='none';}else el.hidden=true})}catch{}}
-form.onsubmit=async e=>{e.preventDefault();let b={product:product.value,name:name.value,phone:phone.value,city:city.value,district:district.value,address:address.value,requestNo:rn.value,requestDate:rd.value,requestCode:rc.value};let r=await fetch('/api/orders',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)});if(r.ok){f.style.display='none';ok.style.display='block'}else alert('Kayıt yapılamadı.');};loadSettings();
+form.onsubmit=async e=>{
+  e.preventDefault();
+  let b={product:product.value,name:name.value,phone:phone.value,city:city.value,district:district.value,address:address.value};
+  try{
+    let r=await fetch('/api/orders',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)});
+    let j=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(j.detail||j.error||'Kayıt yapılamadı');
+    orderRef.textContent=j.orderReference||'-';
+    f.style.display='none';
+    ok.style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(err){
+    alert('Talebiniz şu anda kaydedilemedi. Lütfen daha sonra tekrar deneyin.');
+  }
+};loadSettings();
 </script></body></html>
