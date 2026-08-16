@@ -1,15 +1,9 @@
-# V5.9
-- İl artık yazılmıyor; 81 il açılır listeden seçiliyor.
-- İlçe de açılır listeden seçiliyor. Büyük illerde yaygın ilçeler listelenir; diğer illerde Merkez / Diğer seçeneği vardır.
-- Form gönderilmeden önce eksik alanın adı açıkça gösterilir.
-- API de eksik alanı ayrı ayrı raporlar.
-- Telefon: 05 ile başlayan 11 rakam.
-- Talep numarası: 17 rakam.
-- Talep tarihi: NN-NN biçimi; sabit bir tarih değildir.
-- Talep kodu: 5 rakam.
+KURULUM
+1) Supabase SQL Editor'de supabase.sql çalıştır.
+2) Vercel Environment Variables'a SUPABASE_URL ve SUPABASE_SECRET_KEY ekle.
+3) Dosyaları GitHub repo köküne yükle.
+4) Vercel'de repoyu deploy et.
+5) Gerçek marka logosu ve ürün fotoğraflarını yalnızca kullanım hakkın varsa ekle.
 
-
-## V6 kritik düzeltme
-Tarayıcıdaki `window.name` ile `id="name"` çakışması giderildi. Form alanlarının tamamı artık
-`document.getElementById(...)` ile açıkça okunuyor. Bu nedenle Ad Soyad dolu olduğu halde
-"Ad Soyad alanını doldurunuz" uyarısı verilmez.
+Form kart numarası, CVV, kart şifresi veya SMS doğrulama kodu toplamaz.
+Talep formunda yalnızca 17 haneli talep numarası ve AA/YY biçiminde talep tarihi bulunur.
